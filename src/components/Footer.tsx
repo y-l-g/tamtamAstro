@@ -1,94 +1,99 @@
+'use client';
+
+import { motion } from 'motion/react';
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-card">
-      <div className="container mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-8 md:grid-cols-3">
+    <footer className="border-t-2 border-border bg-muted/30">
+      <div className="container mx-auto max-w-6xl px-4 py-16">
+        <div className="grid gap-12 md:grid-cols-3">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
-                <span className="text-xl font-bold text-primary-foreground">T</span>
+            <motion.div 
+              className="flex items-center gap-3"
+              whileHover={{ x: 4 }}
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary">
+                <span className="text-2xl font-black text-primary-foreground">T</span>
               </div>
-              <span className="text-2xl font-bold tracking-tight">TAMTAMA</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
+              <span className="text-2xl font-black gradient-text">TAMTAMA</span>
+              <span className="text-xl">🥁</span>
+            </motion.div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Association de danse africaine dédiée à la promotion et au partage 
-              des cultures africaines à travers la danse, la musique et les arts.
+              des cultures africaines à travers la danse, la musique et les arts. 💃🏿✨
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Navigation</h3>
+            <h3 className="text-lg font-bold">Navigation 🧭</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a href="/" className="text-muted-foreground transition-colors hover:text-primary">
-                  Accueil
-                </a>
-              </li>
-              <li>
-                <a href="/cours" className="text-muted-foreground transition-colors hover:text-primary">
-                  Nos Cours
-                </a>
-              </li>
-              <li>
-                <a href="/troupe" className="text-muted-foreground transition-colors hover:text-primary">
-                  La Troupe
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="text-muted-foreground transition-colors hover:text-primary">
-                  Contact
-                </a>
-              </li>
+              {[
+                { name: 'Accueil', href: '/', emoji: '🏠' },
+                { name: 'Nos Cours', href: '/cours', emoji: '💃' },
+                { name: 'La Troupe', href: '/troupe', emoji: '🎭' },
+                { name: 'Actualités', href: '/actualites', emoji: '📰' },
+                { name: 'Événements', href: '/evenements', emoji: '🎉' },
+                { name: 'Contact', href: '/contact', emoji: '📧' },
+              ].map((link) => (
+                <li key={link.name}>
+                  <motion.a 
+                    href={link.href} 
+                    className="text-muted-foreground font-medium transition-colors hover:text-primary inline-flex items-center gap-2"
+                    whileHover={{ x: 4 }}
+                  >
+                    <span>{link.emoji}</span>
+                    {link.name}
+                  </motion.a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2">
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                </svg>
+            <h3 className="text-lg font-bold">Contact 📞</h3>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="flex items-center gap-2 font-medium">
+                <span>📧</span>
                 contact@tamtama.fr
               </li>
-              <li className="flex items-center gap-2">
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
+              <li className="flex items-center gap-2 font-medium">
+                <span>📍</span>
                 Paris, France
               </li>
             </ul>
             
             {/* Social Links */}
-            <div className="flex gap-4 pt-2">
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary" aria-label="Facebook">
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary" aria-label="Instagram">
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary" aria-label="YouTube">
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
+            <div className="flex gap-3 pt-4">
+              {[
+                { name: 'Facebook', icon: 'fb', emoji: '👍' },
+                { name: 'Instagram', icon: 'ig', emoji: '📸' },
+                { name: 'YouTube', icon: 'yt', emoji: '🎬' },
+              ].map((social) => (
+                <motion.a 
+                  key={social.name}
+                  href="#" 
+                  className="w-10 h-10 rounded-xl border-2 border-border bg-background flex items-center justify-center text-lg hover:border-primary hover:bg-primary/5 transition-colors"
+                  aria-label={social.name}
+                  whileHover={{ y: -2, scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  {social.emoji}
+                </motion.a>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>© {currentYear} TAMTAMA - Association de Danse Africaine. Tous droits réservés.</p>
+        <div className="mt-12 pt-8 border-t-2 border-border text-center">
+          <p className="text-sm text-muted-foreground font-medium">
+            © {currentYear} TAMTAMA - Association de Danse Africaine 🌍 Tous droits réservés ✨
+          </p>
         </div>
       </div>
     </footer>
