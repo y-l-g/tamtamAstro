@@ -1,0 +1,141 @@
+---
+import Layout from "../../layouts/main.astro";
+import { newsData, getNewsItem } from "../../data/news";
+import { Badge } from "../../components/ui/badge";
+
+export function getStaticPaths() {
+  return newsData.map((news) => ({
+    params: { slug: news.slug },
+    props: { news },
+  }));
+}
+
+const { slug } = Astro.params;
+const { news } = Astro.props;
+
+if (!news) {
+  return Astro.redirect("/actualites");
+}
+---
+
+<Layout title={`${news.title} - TAMTAMA`} description={news.excerpt}>
+  <article class="py-16">
+    <div class="container mx-auto max-w-3xl px-4">
+      <!-- Breadcrumb -->
+      <nav class="mb-8">
+        <ol class="flex items-center gap-2 text-sm text-muted-foreground">
+          <li><a href="/" class="hover:text-primary">Accueil</a></li>
+          <li>/</li>
+          <li>
+            <a href="/actualites" class="hover:text-primary">Actualités</a>
+          </li>
+          <li>/</li>
+          <li class="text-foreground">{news.title}</li>
+        </ol>
+      </nav>
+
+      <!-- Header -->
+      <header class="mb-8">
+        <div class="flex items-center gap-3 mb-4">
+          <Badge variant="secondary">{news.category}</Badge>
+          <time class="text-sm text-muted-foreground">{news.dateFormatted}</time
+          >
+        </div>
+        <h1
+          class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
+        >
+          {news.title}
+        </h1>
+        <p class="mt-4 text-lg text-muted-foreground">
+          {news.excerpt}
+        </p>
+      </header>
+
+      <!-- Featured Image Placeholder -->
+      <div
+        class="aspect-video rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 mb-8 flex items-center justify-center"
+      >
+        <svg
+          class="h-16 w-16 text-muted-foreground/30"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+          ></path>
+        </svg>
+      </div>
+
+      <!-- Content -->
+      <div
+        class="prose prose-lg max-w-none
+        prose-headings:text-foreground prose-headings:font-bold
+        prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
+        prose-p:text-muted-foreground prose-p:leading-relaxed
+        prose-li:text-muted-foreground
+        prose-strong:text-foreground
+        prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
+        set:html={news.content}
+      />
+
+      <!-- Share -->
+      <div class="mt-12 pt-8 border-t border-border">
+        <p class="text-sm font-medium text-foreground mb-4">
+          Partager cet article
+        </p>
+        <div class="flex gap-3">
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url}`}
+            target="_blank"
+            rel="noopener"
+            class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href={`https://twitter.com/intent/tweet?url=${Astro.url}&text=${news.title}`}
+            target="_blank"
+            rel="noopener"
+            class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Back Link -->
+      <div class="mt-8">
+        <a
+          href="/actualites"
+          class="inline-flex items-center text-sm font-medium text-primary hover:underline"
+        >
+          <svg
+            class="mr-1 h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+          </svg>
+          Retour aux actualités
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>

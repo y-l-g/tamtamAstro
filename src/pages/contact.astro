@@ -1,0 +1,335 @@
+---
+import Layout from "../layouts/main.astro";
+import { Button } from "../components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
+---
+
+<Layout
+  title="Contact - TAMTAMA"
+  description="Contactez l'association TAMTAMA pour vos cours de danse africaine, spectacles et événements."
+>
+  <!-- Hero -->
+  <section
+    class="bg-gradient-to-br from-accent/10 via-primary/5 to-secondary/10 py-16"
+  >
+    <div class="container mx-auto max-w-6xl px-4 text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+        Contactez-nous
+      </h1>
+      <p class="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+        Une question sur nos cours ? Envie de réserver un spectacle ? N'hésitez
+        pas à nous écrire !
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container mx-auto max-w-6xl px-4">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-2xl font-bold text-foreground mb-6">
+            Envoyez-nous un message
+          </h2>
+
+          <form class="space-y-6" id="contact-form">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label
+                  for="firstName"
+                  class="block text-sm font-medium text-foreground mb-2"
+                >
+                  Prénom *
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  required
+                  class="w-full rounded-md border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring"
+                  placeholder="Votre prénom"
+                />
+              </div>
+              <div>
+                <label
+                  for="lastName"
+                  class="block text-sm font-medium text-foreground mb-2"
+                >
+                  Nom *
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  required
+                  class="w-full rounded-md border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring"
+                  placeholder="Votre nom"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-foreground mb-2"
+              >
+                Email *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full rounded-md border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring"
+                placeholder="votre@email.com"
+              />
+            </div>
+
+            <div>
+              <label
+                for="phone"
+                class="block text-sm font-medium text-foreground mb-2"
+              >
+                Téléphone
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full rounded-md border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring"
+                placeholder="06 12 34 56 78"
+              />
+            </div>
+
+            <div>
+              <label
+                for="subject"
+                class="block text-sm font-medium text-foreground mb-2"
+              >
+                Sujet *
+              </label>
+              <select
+                id="subject"
+                name="subject"
+                required
+                class="w-full rounded-md border border-input bg-background px-4 py-2.5 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring"
+              >
+                <option value="">Sélectionnez un sujet</option>
+                <option value="cours">Inscription aux cours</option>
+                <option value="essai">Cours d'essai gratuit</option>
+                <option value="spectacle">Demande de spectacle</option>
+                <option value="stage">Stage / Workshop</option>
+                <option value="autre">Autre demande</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="message"
+                class="block text-sm font-medium text-foreground mb-2"
+              >
+                Message *
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                class="w-full rounded-md border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring resize-none"
+                placeholder="Votre message..."></textarea>
+            </div>
+
+            <Button type="submit" className="w-full sm:w-auto">
+              Envoyer le message
+            </Button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="text-2xl font-bold text-foreground mb-6">
+              Informations
+            </h2>
+
+            <div class="space-y-6">
+              <Card>
+                <CardContent className="flex items-start gap-4 pt-6">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"
+                  >
+                    <svg
+                      class="h-6 w-6 text-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-foreground">Adresse</h3>
+                    <p class="text-muted-foreground mt-1">
+                      Studio TAMTAMA<br />
+                      42 Rue de la Danse<br />
+                      75011 Paris, France
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="flex items-start gap-4 pt-6">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"
+                  >
+                    <svg
+                      class="h-6 w-6 text-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-foreground">Email</h3>
+                    <p class="text-muted-foreground mt-1">
+                      <a
+                        href="mailto:contact@tamtama.fr"
+                        class="hover:text-primary transition-colors"
+                      >
+                        contact@tamtama.fr
+                      </a>
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="flex items-start gap-4 pt-6">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"
+                  >
+                    <svg
+                      class="h-6 w-6 text-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-foreground">Téléphone</h3>
+                    <p class="text-muted-foreground mt-1">
+                      <a
+                        href="tel:+33123456789"
+                        class="hover:text-primary transition-colors"
+                      >
+                        01 23 45 67 89
+                      </a>
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="flex items-start gap-4 pt-6">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"
+                  >
+                    <svg
+                      class="h-6 w-6 text-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-foreground">
+                      Horaires d'accueil
+                    </h3>
+                    <p class="text-muted-foreground mt-1">
+                      Lundi - Vendredi : 17h - 21h<br />
+                      Samedi : 10h - 18h<br />
+                      Dimanche : Fermé
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h3 class="font-semibold text-foreground mb-4">Suivez-nous</h3>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

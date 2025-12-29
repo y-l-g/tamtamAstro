@@ -1,0 +1,98 @@
+---
+import Layout from "../../layouts/main.astro";
+import { EventCard } from "../../components/EventCard";
+import { eventsData } from "../../data/events";
+import { Badge } from "../../components/ui/badge";
+
+// Get unique categories
+const categories = [...new Set(eventsData.map((e) => e.category))];
+
+// Sort by date (upcoming first)
+const sortedEvents = [...eventsData].sort((a, b) =>
+  a.date.localeCompare(b.date)
+);
+---
+
+<Layout
+  title="Événements - TAMTAMA"
+  description="Tous les événements de l'association TAMTAMA : cours, soirées, stages et spectacles."
+>
+  <!-- Hero -->
+  <section
+    class="bg-gradient-to-br from-secondary/10 via-primary/5 to-accent/10 py-16"
+  >
+    <div class="container mx-auto max-w-6xl px-4 text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+        Événements
+      </h1>
+      <p class="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+        Cours découverte, soirées dansantes, stages intensifs et spectacles...
+        Retrouvez tous les événements de TAMTAMA.
+      </p>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="py-8 border-b border-border">
+    <div class="container mx-auto max-w-6xl px-4">
+      <div class="flex flex-wrap gap-2 justify-center">
+        <Badge variant="default" className="cursor-pointer">Tous</Badge>
+        {
+          categories.map((cat) => (
+            <Badge variant="outline" className="cursor-pointer hover:bg-muted">
+              {cat}
+            </Badge>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Events List -->
+  <section class="py-16">
+    <div class="container mx-auto max-w-4xl px-4">
+      <div class="space-y-4">
+        {
+          sortedEvents.map((event) => (
+            <a href={`/evenements/${event.slug}`} class="block">
+              <EventCard
+                title={event.title}
+                date={event.date}
+                time={event.time}
+                location={event.location}
+                category={event.category}
+                description={event.description}
+              />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe CTA -->
+  <section class="py-16 bg-muted/30">
+    <div class="container mx-auto max-w-2xl px-4 text-center">
+      <h2 class="text-2xl font-bold text-foreground">
+        Ne manquez aucun événement
+      </h2>
+      <p class="mt-3 text-muted-foreground">
+        Inscrivez-vous à notre newsletter pour recevoir nos actualités et
+        événements.
+      </p>
+      <form class="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input
+          type="email"
+          placeholder="votre@email.com"
+          class="flex-1 rounded-md border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring"
+        />
+        <button
+          type="submit"
+          class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+        >
+          S'inscrire
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>

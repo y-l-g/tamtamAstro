@@ -1,0 +1,278 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Fun typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* 🎉 TAMTAMA - Fun & Vibrant African Dance Palette */
+:root {
+  --radius: 1rem;
+  
+  /* Bright white background */
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.15 0.02 30);
+  
+  /* Crisp white cards */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 30);
+  
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 30);
+  
+  /* Primary - Vibrant Orange */
+  --primary: oklch(0.70 0.20 45);
+  --primary-foreground: oklch(1 0 0);
+  
+  /* Secondary - Lush Green */
+  --secondary: oklch(0.65 0.20 145);
+  --secondary-foreground: oklch(1 0 0);
+  
+  /* Muted - Light gray */
+  --muted: oklch(0.96 0.005 0);
+  --muted-foreground: oklch(0.45 0.01 0);
+  
+  /* Accent - Bright Yellow */
+  --accent: oklch(0.88 0.18 90);
+  --accent-foreground: oklch(0.15 0.02 30);
+  
+  --destructive: oklch(0.65 0.25 25);
+  
+  /* Clean borders */
+  --border: oklch(0.92 0 0);
+  --input: oklch(0.92 0 0);
+  --ring: oklch(0.70 0.20 45);
+  
+  /* Chart colors - Party colors! */
+  --chart-1: oklch(0.70 0.20 45);   /* Orange */
+  --chart-2: oklch(0.65 0.20 145);  /* Green */
+  --chart-3: oklch(0.88 0.18 90);   /* Yellow */
+  --chart-4: oklch(0.60 0.20 350);  /* Pink */
+  --chart-5: oklch(0.55 0.20 260);  /* Purple */
+  
+  --sidebar: oklch(0.15 0.03 30);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.88 0.18 90);
+  --sidebar-primary-foreground: oklch(0.15 0.02 30);
+  --sidebar-accent: oklch(0.25 0.03 30);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.25 0.02 30);
+  --sidebar-ring: oklch(0.70 0.20 45);
+}
+
+.dark {
+  /* Deep dark background */
+  --background: oklch(0.12 0.02 30);
+  --foreground: oklch(0.98 0 0);
+  
+  /* Dark cards */
+  --card: oklch(0.16 0.02 30);
+  --card-foreground: oklch(0.98 0 0);
+  
+  --popover: oklch(0.16 0.02 30);
+  --popover-foreground: oklch(0.98 0 0);
+  
+  /* Brighter primary for dark mode */
+  --primary: oklch(0.75 0.20 45);
+  --primary-foreground: oklch(0.12 0.02 30);
+  
+  /* Brighter green */
+  --secondary: oklch(0.70 0.20 145);
+  --secondary-foreground: oklch(0.12 0.02 30);
+  
+  /* Dark muted */
+  --muted: oklch(0.22 0.02 30);
+  --muted-foreground: oklch(0.65 0.01 0);
+  
+  /* Bright yellow */
+  --accent: oklch(0.90 0.18 90);
+  --accent-foreground: oklch(0.12 0.02 30);
+  
+  --destructive: oklch(0.70 0.20 25);
+  
+  --border: oklch(0.25 0.01 30);
+  --input: oklch(0.22 0.01 30);
+  --ring: oklch(0.75 0.20 45);
+  
+  /* Bright chart colors */
+  --chart-1: oklch(0.75 0.20 45);
+  --chart-2: oklch(0.70 0.20 145);
+  --chart-3: oklch(0.90 0.18 90);
+  --chart-4: oklch(0.70 0.20 350);
+  --chart-5: oklch(0.65 0.20 260);
+  
+  --sidebar: oklch(0.10 0.02 30);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.90 0.18 90);
+  --sidebar-primary-foreground: oklch(0.12 0.02 30);
+  --sidebar-accent: oklch(0.20 0.02 30);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.22 0.01 30);
+  --sidebar-ring: oklch(0.75 0.20 45);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+}
+
+/* 🎭 Fun Animation Utilities */
+@layer utilities {
+  /* Bounce on click */
+  .bounce-click {
+    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .bounce-click:active {
+    transform: scale(0.95);
+  }
+
+  /* Wiggle animation */
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+  .animate-wiggle {
+    animation: wiggle 0.3s ease-in-out;
+  }
+  
+  /* Pop animation */
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  .animate-pop {
+    animation: pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  /* Slide up fade in */
+  @keyframes slideUpFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-slide-up {
+    animation: slideUpFadeIn 0.5s ease-out forwards;
+  }
+  
+  /* Stagger children */
+  .stagger-children > * {
+    opacity: 0;
+    animation: slideUpFadeIn 0.5s ease-out forwards;
+  }
+  .stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.10s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.20s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+  .stagger-children > *:nth-child(6) { animation-delay: 0.30s; }
+  
+  /* Fun gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Confetti-like dots background */
+  .bg-confetti {
+    background-image: 
+      radial-gradient(circle at 10% 20%, var(--primary) 2px, transparent 2px),
+      radial-gradient(circle at 90% 80%, var(--secondary) 2px, transparent 2px),
+      radial-gradient(circle at 50% 10%, var(--accent) 2px, transparent 2px),
+      radial-gradient(circle at 20% 90%, var(--primary) 1.5px, transparent 1.5px),
+      radial-gradient(circle at 80% 30%, var(--secondary) 1.5px, transparent 1.5px);
+    background-size: 100px 100px;
+  }
+  
+  /* Fun border with gradient */
+  .border-gradient {
+    border: 2px solid transparent;
+    background: 
+      linear-gradient(var(--card), var(--card)) padding-box,
+      linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)) border-box;
+  }
+
+  /* Pulse glow */
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.70 0.20 45 / 0.4); }
+    50% { box-shadow: 0 0 0 8px oklch(0.70 0.20 45 / 0); }
+  }
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  /* Float animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Drum beat animation */
+  @keyframes drumBeat {
+    0%, 100% { transform: scale(1); }
+    10% { transform: scale(1.03); }
+    20% { transform: scale(1); }
+    30% { transform: scale(1.02); }
+    40% { transform: scale(1); }
+  }
+  .animate-drum {
+    animation: drumBeat 1.5s ease-in-out infinite;
+  }
+}

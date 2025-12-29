@@ -1,0 +1,63 @@
+---
+import Layout from "../../layouts/main.astro";
+import { NewsCard } from "../../components/NewsCard";
+import { newsData } from "../../data/news";
+import { Badge } from "../../components/ui/badge";
+
+// Get unique categories
+const categories = [...new Set(newsData.map((n) => n.category))];
+---
+
+<Layout
+  title="Actualités - TAMTAMA"
+  description="Toutes les actualités de l'association TAMTAMA : stages, cours, spectacles et événements."
+>
+  <!-- Hero -->
+  <section
+    class="bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 py-16"
+  >
+    <div class="container mx-auto max-w-6xl px-4 text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+        Actualités
+      </h1>
+      <p class="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+        Restez informé des dernières nouvelles de l'association : stages,
+        nouveaux cours, spectacles et événements à venir.
+      </p>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="py-8 border-b border-border">
+    <div class="container mx-auto max-w-6xl px-4">
+      <div class="flex flex-wrap gap-2 justify-center">
+        <Badge variant="default" className="cursor-pointer">Toutes</Badge>
+        {
+          categories.map((cat) => (
+            <Badge variant="outline" className="cursor-pointer hover:bg-muted">
+              {cat}
+            </Badge>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- News Grid -->
+  <section class="py-16">
+    <div class="container mx-auto max-w-6xl px-4">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          newsData.map((news) => (
+            <NewsCard
+              title={news.title}
+              excerpt={news.excerpt}
+              date={news.dateFormatted}
+              slug={news.slug}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
